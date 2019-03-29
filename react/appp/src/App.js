@@ -6,17 +6,23 @@ class App extends Component {
     return (
       <div className="contenedor">
         <h1 className="titulo">
-          Los trabajadores de la televisión y la radio llevaremos a cabo nuestra
-          sexagésima octava asamblea general ordinaria del consejo nacional en Quintana Roo,
-          inaugurando los trabajos del gobernador del estado. Con el respaldo de la confederación
-          de trabajadores de México avanzamos para un mejor futuro comprometidos contigo. ¡Por una superación social! SITATYR CTM
+            SITATYR
         </h1>
+        <p className="texto">
+        Los trabajadores de la televisión y la radio
+        llevaremos a cabo nuestra sexagésima octava
+        asamblea general ordinaria del consejo nacional
+        en Quintana Roo, inaugurando los trabajos del gobernador
+        del estado. Con el respaldo de la confederación
+        de trabajadores de México avanzamos para un mejor
+        futuro comprometidos contigo. ¡Por una superación social! SITATYR CTM
+        </p>
         <form onSubmit={this.handleSubmit}>
         <input type="text" className="caja" value={this.state.newState} onChange={this.handleChange}>
         </input>
         </form>
 
-        <p className="texto">{this.state.newState}</p>
+        <p className="lista">{this.state.newState}</p>
         {
           //el mapeo es para modificar objetos de manera asincrona
           this.state.listState.map((task, index) =>
@@ -42,7 +48,7 @@ class App extends Component {
   handleSubmit = (evento) => {
     evento.preventDefault();
     let tasks = this.state.listState;
-    tasks.push(this.state.newState);
+    tasks.unshift(this.state.newState);
     this.setState({
       //append a la lista
       newState : "",

@@ -9,11 +9,19 @@ body {
 
 .titulo {
   font-family: 'Overpass';
-  font-size: 28px;
+  font-size: 40px;
   color: white;
   text-align: center;
   width: 700px;
   margin: auto;
+}
+
+.texto {
+  text-align: justify;
+  width: 50%;
+  color: white;
+  margin: auto;
+  font-size: 28px;
 }
 
 .caja {
@@ -28,7 +36,7 @@ body {
   text-align: center;
 }
 
-.texto {
+.lista {
   font-family: 'Overpass';
   font-size: 28px;
   color: white;
