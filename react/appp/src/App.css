@@ -1,5 +1,5 @@
 body {
-  background-color: #455A64;
+  background-color: #004d99;
   text-align: center;
 }
 
@@ -12,8 +12,15 @@ body {
   font-size: 40px;
   color: white;
   text-align: center;
-  width: 700px;
+  width: 270px;
+  height: 80px;
   margin: auto;
+  background-color: gray;
+  text-align: center;
+  padding-top: 30px;
+  border-style: dotted;
+  border-color: red;
+  border-radius: 10px;
 }
 
 .texto {
@@ -22,6 +29,7 @@ body {
   color: white;
   margin: auto;
   font-size: 28px;
+  padding: 15px;
 }
 
 .caja {
@@ -45,4 +53,43 @@ body {
 .caja:hover{
   background-color: #5C6BC0;
   transition: 2s ease-in;
+}
+
+.caja_lista{
+  background-color: white;
+  width: 400px;
+  margin: auto;
+  height: 50px;
+  border-left: 12px solid red;
+}
+
+.tarea_lista{
+  font-family: 'Overpass';
+  color: gray;
+  padding: 15px;
+}
+
+.texto_tarea{
+  color: white;
+  font-family: "Overpass"
+}
+
+.contenedor_boton{
+  background-color: black;
+  border-radius: 13px;
+  height: 23px;
+  color: white;
+  border-width: 0px;
+  font-weight: bolder;
+}
+
+.boton{
+  position: relative;
+  float: right;
+  margin: -60px 10px;
+  background-color: black;
+  color: white;
+  border-radius: 10px;
+  height: 27px;
+  border-style: none;
 }

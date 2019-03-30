@@ -1,68 +1,66 @@
 import React, { Component } from 'react';
 import './App.css';
+import Task from './components/Task';
+import Title from './components/Title';
+import TaskList from './components/Tasklist';
+import Input from './components/Input';
+import Layout from './components/Layout';
+import Description from './components/Description';
 
 class App extends Component {
-  render() {
-    return (
-      <div className="contenedor">
-        <h1 className="titulo">
-            SITATYR
-        </h1>
-        <p className="texto">
-        Los trabajadores de la televisión y la radio
-        llevaremos a cabo nuestra sexagésima octava
-        asamblea general ordinaria del consejo nacional
-        en Quintana Roo, inaugurando los trabajos del gobernador
-        del estado. Con el respaldo de la confederación
-        de trabajadores de México avanzamos para un mejor
-        futuro comprometidos contigo. ¡Por una superación social! SITATYR CTM
-        </p>
-        <form onSubmit={this.handleSubmit}>
-        <input type="text" className="caja" value={this.state.newState} onChange={this.handleChange}>
-        </input>
-        </form>
-
-        <p className="lista">{this.state.newState}</p>
-        {
-          //el mapeo es para modificar objetos de manera asincrona
-          this.state.listState.map((task, index) =>
-          <div key={'mykey' + index}>
-                  <h2 className="task"> {task} </h2>
-          </div>
-
-        )
-      }
-      </div>
-    );
-  }
-  constructor(prop) {
-    //inicializa la clase
-    super(prop)
-    //estados a los que vamos a reaccionar
+  constructor(props) {
+    super(props)
     this.state = {
-      newState: "",
-      listState: []
+      newTask: "",
+      tasks: []
     }
   }
-
-  handleSubmit = (evento) => {
-    evento.preventDefault();
-    let tasks = this.state.listState;
-    tasks.unshift(this.state.newState);
+  handleTaskChange = (event) => {
     this.setState({
-      //append a la lista
-      newState : "",
-      listState: tasks
+      newTask: event.target.value,
     })
   }
-  //funcion que se activa con el cambio
-  handleChange = (evento) => {
+  handleSubmit = (event) => {
+    event.preventDefault();
+    if (this.state.newTask == ""){
+      return;
+    }
+    let newTasks = this.state.tasks;
+    newTasks.unshift(this.state.newTask)
     this.setState({
-      newState: evento.target.value
+      newTask: "",
+      tasks: newTasks
     })
-    //checa si se presiona enter
+  }
+  handleDelete = (id) => {
+    let newTasks = this.state.tasks;
+    newTasks.splice(id, 1)
+    this.setState({
+      tasks: newTasks,
+    })
+  }
+  render() {
+    return (
+      <Layout>
+        <Title/>
+        <Description/>
+        <Input
+          handleSubmit={this.handleSubmit}
+          handleTaskChange={this.handleTaskChange}
+          value={this.state.newTask}
+        />
+        <TaskList
+          tasks={this.state.tasks}
+          handleDelete={this.handleDelete}
+        />
+      </Layout>
+    );
+
 
   }
+
+
+
 }
 
 export default App;
